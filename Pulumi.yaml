@@ -1,0 +1,6 @@
+name: acme-infra-retail
+runtime:
+  name: nodejs
+  options:
+    typescript: true
+description: Acme Retail Spoke Infrastructure — Pulumi TypeScript

@@ -1,0 +1,4 @@
+config:
+  azure-native:location: eastus
+  acme-infra-retail:environment: prod
+  acme-infra-retail:hubStackReference: acme-corp/hub/prod
