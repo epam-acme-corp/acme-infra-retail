@@ -4,3 +4,6 @@ runtime:
   options:
     typescript: true
 description: Acme Retail Spoke Infrastructure — Pulumi TypeScript
+
+backend:
+  url: azblob://pulumi-state
