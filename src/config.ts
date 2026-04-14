@@ -15,6 +15,14 @@ const azureConfig = new pulumi.Config("azure-native");
 export const location = azureConfig.get("location") ?? "eastus";
 export const environment = config.get("environment") ?? "prod";
 export const hubStackReference = config.get("hubStackReference") ?? "acme-corp/hub/prod";
+export const hubFirewallPrivateIp = config.get("hubFirewallPrivateIp") ?? "10.0.1.4";
+export const hubAcrResourceId =
+  config.get("hubAcrResourceId") ??
+  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-acme-hub-prod/providers/Microsoft.ContainerRegistry/registries/acracmehubprod";
+export const opcoPlatformGroupObjectId = config.get("opcoPlatformGroupObjectId") ?? "11111111-1111-1111-1111-111111111111";
+export const opcoReadOnlyGroupObjectId = config.get("opcoReadOnlyGroupObjectId") ?? "22222222-2222-2222-2222-222222222222";
+export const namespaceUserGroupObjectIds = config.getObject<Record<string, string>>("namespaceUserGroupObjectIds") ?? {};
+export const approvedPciIngressNamespaces = config.getObject<string[]>("approvedPciIngressNamespaces") ?? ["ingress-nginx"];
 
 export const naming = {
   resourceGroup: `rg-acme-retail-${environment}`,
@@ -39,6 +47,9 @@ export const retailNetwork = {
     privateEndpoints: { name: "snet-private-endpoints", cidr: "10.2.17.0/24" },
   },
 };
+
+export const databasePrivateEndpointCidrs = [retailNetwork.subnets.privateEndpoints.cidr];
+export const databaseEgressPorts = [5432, 443, 10000];
 
 export const namespaceSpecs: NamespaceSpec[] = [
   {

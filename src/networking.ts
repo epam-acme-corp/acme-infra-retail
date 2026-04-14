@@ -154,6 +154,9 @@ export const hubOutputs = {
   hubVnetName: hub.getOutput("hubVnetName"),
   hubResourceGroupName: hub.getOutput("hubResourceGroupName"),
   logAnalyticsWorkspaceId: hub.getOutput("logAnalyticsWorkspaceId"),
+  keyVaultUri: hub.getOutput("keyVaultUri"),
+  firewallPrivateIp: hub.getOutput("firewallPrivateIp"),
+  acrId: hub.getOutput("acrId"),
 };
 
 export const spokeToHubPeering = new network.VirtualNetworkPeering("peer-retail-to-hub", {
